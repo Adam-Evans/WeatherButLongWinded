@@ -1,37 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Playfair+Display:wght@400;700&display=swap');
+
+:root {
+  --primary-color: #5d4037;
+  --secondary-color: #a1887f;
+  --accent-color: #8d6e63;
+  --background-color: #f5f5f5;
+  --paper-color: #f7f1e3;
+  --text-color: #3a3a3a;
+  --text-light: #666;
+  --border-color: #ddd;
+}
+
+body {
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 0;
+  font-family: 'Lora', serif;
+  color: var(--text-color);
+}
+
 .App {
   text-align: center;
-  font-family: sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-header {
-  background-color: #282c34;
-  padding: 20px;
+  background-color: var(--primary-color);
+  padding: 1.5rem;
   color: white;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.App-header h1 {
+  font-family: 'Playfair Display', serif;
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.App-header p {
+  font-style: italic;
+  margin: 0.5rem 0 1rem;
+  opacity: 0.9;
+}
+
+.view-toggle {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Lora', serif;
+  transition: background-color 0.2s;
+}
+
+.view-toggle:hover {
+  background-color: var(--secondary-color);
 }
 
 main {
-  padding: 20px;
+  flex: 1;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.list-view {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .weather-card {
-  border: 1px solid #ddd;
+  background-color: var(--paper-color);
   border-radius: 8px;
-  padding: 20px;
-  margin: 10px;
-  width: 80%;
-  max-width: 600px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.weather-card h2 {
+  font-family: 'Playfair Display', serif;
+  color: var(--primary-color);
+  margin-top: 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .weather-info {
-  text-align: left;
-  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
 }
 
-.story {
-  text-align: left;
-  font-style: italic;
+.weather-info p {
+  margin: 0;
+  flex: 1 0 calc(33% - 1rem);
+}
+
+.story h3 {
+  font-family: 'Playfair Display', serif;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+}
+
+.story-content {
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+.story-content p {
+  margin-bottom: 1.25rem;
+  text-indent: 2rem;
+}
+
+footer {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem;
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+/* Loading state */
+.App.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 4px solid var(--primary-color);
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error state */
+.App.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #d32f2f;
+}
+
+.App.error button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Lora', serif;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .App-header h1 {
+    font-size: 2rem;
+  }
+  
+  main {
+    padding: 1rem;
+  }
+  
+  .weather-card {
+    padding: 1.5rem;
+  }
+  
+  .weather-info p {
+    flex: 1 0 calc(50% - 1rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .App-header h1 {
+    font-size: 1.75rem;
+  }
+  
+  .weather-info {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .weather-info p {
+    flex: 1 0 100%;
+  }
+  
+  .story-content {
+    font-size: 1rem;
+  }
 }
