@@ -379,7 +379,7 @@ app.get('/weather/weekly', async (req, res) => {
         }
       })));
     }
-    
+
     // Generate weekly stories with continuity
     const weeklyPrompt = utils.generateWeeklyPrompt(mappedWeather);
 
