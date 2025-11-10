@@ -1,1 +1,56 @@
-server/data/weather_stories.db
+# Node & NPM
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build outputs
+dist/
+build/
+client/build/
+server/build/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+server.log
+
+# Database files
+server/data/*.db
+*.sqlite
+
+# Test coverage
+coverage/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Misc
+.cache/
+/.parcel-cache/
+.envrc
+.pnp.*
+
+# Optional npm cache directory
+.npm
+
+# Mac system files
+.Spotlight-V100
+.Trashes
+
+# Lock files should be committed (don't ignore package-lock.json or yarn.lock)
